@@ -105,7 +105,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log-Read PDF " sap:VirtualizedContainerService.HintSize="410,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Read PDF workflow Started&quot;]" />
     <ui:GetOutlookMailMessages Filter="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" Account="[InConfigDic(&quot;Client_ID&quot;).ToString]" DisplayName="Get Outlook Mail Messages" GetAttachements="False" sap:VirtualizedContainerService.HintSize="410,25" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="[InConfigDic(&quot;Folder&quot;).ToString]" MarkAsRead="False" Messages="[MailMessage]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Top="[CInt(InConfigDic(&quot;Top_Email&quot;))]" />
-    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="410,415" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[MailMessage]">
+    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each-Read Emails" sap:VirtualizedContainerService.HintSize="410,415" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[MailMessage]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="snm:MailMessage">
           <ActivityAction.Argument>
