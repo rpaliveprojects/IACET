@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>562,1410</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>562,1772</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Save_Attachments_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -92,7 +92,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Save Email Attchments" sap:VirtualizedContainerService.HintSize="572,1345" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Save Email Attchments" sap:VirtualizedContainerService.HintSize="572,1707" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="GetMail" />
     </Sequence.Variables>
@@ -103,13 +103,13 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log-Save Attachments" sap:VirtualizedContainerService.HintSize="510,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Save Attachment Workflow Started&quot;]" />
     <ui:GetOutlookMailMessages Filter="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" Account="[In_ConfigDic(&quot;Client_ID&quot;).ToString]" DisplayName="Get Outlook Mail Messages" GetAttachements="False" sap:VirtualizedContainerService.HintSize="510,25" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="[In_ConfigDic(&quot;Mail_Folder&quot;).ToString]" MarkAsRead="False" Messages="[GetMail]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Top="[Cint(In_ConfigDic(&quot;Top_Email&quot;))]" />
-    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each-Read Email" sap:VirtualizedContainerService.HintSize="510,988" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[GetMail]">
+    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each-Read Email" sap:VirtualizedContainerService.HintSize="510,1350" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[GetMail]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="snm:MailMessage">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="currentItem" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,802" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,1164" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="AttachmentExist" />
             </Sequence.Variables>
@@ -126,19 +126,20 @@
                 <InArgument x:TypeArguments="x:Boolean">[currentItem.Attachments.Any]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[AttachmentExist]" sap:VirtualizedContainerService.HintSize="434,592" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[AttachmentExist]" sap:VirtualizedContainerService.HintSize="434,954" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,176" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence sap:VirtualizedContainerService.HintSize="376,357" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" ExcludeInlineAttachments="False" FolderPath="[In_ConfigDic(&quot;SaveEmail_FileFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[currentItem]" OverwriteExisting="False" />
+                  <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" ExcludeInlineAttachments="False" FolderPath="[In_ConfigDic(&quot;Save Email Attachment&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[currentItem]" OverwriteExisting="False" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Attachment has been saved&quot;]" />
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,234" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence sap:VirtualizedContainerService.HintSize="376,415" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -149,6 +150,7 @@
                       <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                     </ui:SendOutlookMail.Files>
                   </ui:SendOutlookMail>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Email has been sent to Client&quot;]" />
                 </Sequence>
               </If.Else>
             </If>
