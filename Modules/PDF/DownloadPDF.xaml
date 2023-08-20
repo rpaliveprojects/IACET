@@ -1,11 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DownloadPDF" this:DownloadPDF.In_dictConfig="[New Dictionary(of string, object) from{{&quot;OrchestratorQueueName&quot;,&quot;IacetQueue&quot;},{&quot;OrchestratorQueueFolder&quot;,&quot;Shared&quot;},{&quot;MailFolder&quot;,&quot;IACET Project&quot;},{&quot;Port&quot;,&quot;993&quot;},{&quot;Server&quot;,&quot;imap.gmail.com&quot;},{&quot;GmailCredentials&quot;,&quot;GmailAccount&quot;},{&quot;PdfFolderPath&quot;,&quot;C:\Users\pushk\OneDrive\Documents\UiPath\IACET\Data\Temp&quot;}}]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DownloadPDF" this:DownloadPDF.In_dictConfig="[New Dictionary(of string, object) from{{&quot;OrchestratorQueueName&quot;,&quot;IacetQueue&quot;},{&quot;OrchestratorQueueFolder&quot;,&quot;Shared&quot;},{&quot;MailFolder&quot;,&quot;IACET Project&quot;},{&quot;Port&quot;,&quot;993&quot;},{&quot;Server&quot;,&quot;imap.gmail.com&quot;},{&quot;GmailCredentials&quot;,&quot;GmailAccount&quot;},{&quot;PdfFolderPath&quot;,&quot;C:\Users\pushk\OneDrive\Documents\UiPath\IACET\Data\Temp&quot;},{&quot;EmailTempNoPDF&quot;,&quot;Hi ABC,Greetings!No Attachment found&quot;},{&quot;EmailTempNoPDFSubj&quot;,&quot;No Attachment Found&quot;}}]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="In_dictConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>575.3333333333334,866</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>588.6666666666666,1614</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadPDF_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -117,7 +117,7 @@
       <sap2010:ViewStateData sap:VirtualizedContainerService.HintSize="575.3333333333334,463.3333333333333" Id="DownloadPDF_1" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
-  <Sequence DisplayName="DownloadPDF" sap:VirtualizedContainerService.HintSize="472,801.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DownloadPDF" sap:VirtualizedContainerService.HintSize="472,1549.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strUserName" />
       <Variable x:TypeArguments="ss:SecureString" Name="sstrPassWord" />
@@ -128,11 +128,40 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[In_dictConfig(&quot;GmailCredentials&quot;).ToString]" CacheStrategy="None" DisplayName="Get Gmail Credentials" FolderPath="[In_dictConfig(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="410,144.66666666666666" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[sstrPassWord]" Username="[strUserName]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="410,54" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Retriving Outlook Credentials&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[In_dictConfig(&quot;GmailCredentials&quot;).ToString]" CacheStrategy="None" DisplayName="Getiing Gmail User ID and Pwd" FolderPath="[In_dictConfig(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="410,144.66666666666666" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[sstrPassWord]" Username="[strUserName]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="410,54" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Retrived Outlook Credentials&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="410,54" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Started Checking email for attachment&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
     <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" FilterExpression="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" DeleteMessages="False" DisplayName="Get email from IACET Folder" Email="[strUserName]" EnableSSL="True" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="410,25.333333333333332" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" IgnoreCRL="False" MailFolder="[In_dictConfig(&quot;MailFolder&quot;).ToString]" MarkAsRead="False" Messages="[MailMessage]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Port="[CInt(In_dictConfig(&quot;Port&quot;).ToString)]" SecureConnection="Auto" SecurePassword="[sstrPassWord]" Server="[In_dictConfig(&quot;Server&quot;).ToString]" Top="1" />
-    <If Condition="[MailMessage(0).Attachments.Any]" sap:VirtualizedContainerService.HintSize="410,440.6666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="Checking for any attachment and saving it." Condition="[MailMessage(0).Attachments.Any]" sap:VirtualizedContainerService.HintSize="410,906.6666666666666" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,175.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence sap:VirtualizedContainerService.HintSize="376,360" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="Attachment" />
           </Sequence.Variables>
@@ -142,15 +171,36 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:SaveMailAttachments Attachments="[Attachment]" DisplayName="Save Attachments" ExcludeInlineAttachments="False" FolderPath="[In_dictConfig(&quot;PdfFolderPath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_2" Message="[MailMessage(0)]" OverwriteExisting="False" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Attachment Saved&quot;]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="300,81.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="376,332" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,54" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;No Attachment found. Email Sent to business&quot;]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" Email="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[In_dictConfig(&quot;EmailTempNoPDF&quot;).ToString]" DisplayName="Send SMTP Mail Message" EnableSSL="True" sap:VirtualizedContainerService.HintSize="334,150.66666666666666" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" SecureConnection="Auto" Subject="[In_dictConfig(&quot;EmailTempNoPDFSubj&quot;).ToString]" To="[strUserName]">
+            <ui:SendMail.Files>
+              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+            </ui:SendMail.Files>
+          </ui:SendMail>
         </Sequence>
       </If.Else>
     </If>
