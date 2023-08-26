@@ -1,11 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ReadPDFandExtractData" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upap="clr-namespace:UiPath.PDF.Activities.PDF;assembly=UiPath.PDF.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ReadPDFandExtractData" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upap="clr-namespace:UiPath.PDF.Activities.PDF;assembly=UiPath.PDF.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="In_ConfigDic" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>648,1937</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>648,2048</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ReadPDFandExtractData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -37,6 +37,7 @@
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>UiPath.PDF.Activities.PDF</x:String>
       <x:String>UiPath.PDF.Activities</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -80,64 +81,93 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ReadPDFandExtractData" sap:VirtualizedContainerService.HintSize="572,1872" sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="x:Int32" Default="1" Name="intPageCount" />
-      <Variable x:TypeArguments="x:String" Name="strPdfText" />
-      <Variable x:TypeArguments="x:Int32" Default="1" Name="intCounter" />
-    </Sequence.Variables>
+  <Sequence sap:VirtualizedContainerService.HintSize="634,1983" sap2010:WorkflowViewState.IdRef="Sequence_7">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Read PDF and Extract Informations&quot;]" />
-    <upap:GetPDFPageCount DisplayName="Get PDF Page Count" FileName="[In_ConfigDic(&quot;Save Email Attachment&quot;).ToString+&quot;\&quot;+In_ConfigDic(&quot;IACET_Client_Details&quot;).ToString]" sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_1" PageCount="[intPageCount]" />
-    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[intCounter&lt;=intPageCount]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="510,1458" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
-      <ui:InterruptibleDoWhile.Body>
-        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,1322" sap2010:WorkflowViewState.IdRef="Sequence_2">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[In_ConfigDic(&quot;Save Email Attachment&quot;).ToString+&quot;\&quot;+In_ConfigDic(&quot;IACET_Client_Details&quot;).ToString]" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[strPdfText]" />
-          <If Condition="[strPdfText.Length&gt;1]" sap:VirtualizedContainerService.HintSize="434,990" sap2010:WorkflowViewState.IdRef="If_1">
-            <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="376,404" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Extracted PDF which is readable&quot;]" />
-                <upap:ExtractPDFPageRange DisplayName="Extract PDF Page Range" FileName="[In_ConfigDic(&quot;Save Email Attachment&quot;).ToString+&quot;\&quot;+In_ConfigDic(&quot;IACET_Client_Details&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,135" sap2010:WorkflowViewState.IdRef="ExtractPDFPageRange_1" OutputFileName="[In_ConfigDic(&quot;OutputFolder1&quot;).ToString+&quot;\&quot;+intCounter.ToString+&quot;.pdf&quot;]" Range="[intCounter.ToString+&quot;-&quot;+intCounter.ToString]" />
-              </Sequence>
-            </If.Then>
-            <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="376,404" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Extracted PDF which is unreadable&quot;]" />
-                <upap:ExtractPDFPageRange DisplayName="Extract PDF Page Range" FileName="[In_ConfigDic(&quot;Save Email Attachment&quot;).ToString+&quot;\&quot;+In_ConfigDic(&quot;IACET_Client_Details&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,135" sap2010:WorkflowViewState.IdRef="ExtractPDFPageRange_2" OutputFileName="[In_ConfigDic(&quot;OutputFolder2&quot;).ToString+&quot;\&quot;+intCounter.ToString+&quot;.pdf&quot;]" Range="[intCounter.ToString+&quot;-&quot;+intCounter.ToString]" />
-              </Sequence>
-            </If.Else>
-          </If>
-          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Int32">[intCounter]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Int32">[intCounter+1]</InArgument>
-            </Assign.Value>
-          </Assign>
-        </Sequence>
-      </ui:InterruptibleDoWhile.Body>
-    </ui:InterruptibleDoWhile>
+    <Sequence DisplayName="ReadPDFandExtractData" sap:VirtualizedContainerService.HintSize="572,1872" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:Int32" Default="1" Name="intPageCount" />
+        <Variable x:TypeArguments="x:String" Name="strPdfText" />
+        <Variable x:TypeArguments="x:Int32" Default="1" Name="intCounter" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Read PDF and Extract Informations&quot;]" />
+      <upap:GetPDFPageCount DisplayName="Get PDF Page Count" FileName="[In_ConfigDic(&quot;IACET_Client_Details&quot;).ToString]" sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_1" PageCount="[intPageCount]" />
+      <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[intCounter&lt;=intPageCount]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="510,1458" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+        <ui:InterruptibleDoWhile.Body>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,1322" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[In_ConfigDic(&quot;IACET_Client_Details&quot;).ToString]" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[strPdfText]" />
+            <If Condition="[strPdfText.Length&gt;1]" sap:VirtualizedContainerService.HintSize="434,990" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,404" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="strName" />
+                    <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="str" />
+                    <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="strXRDNum" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Extracted PDF which is readable&quot;]" />
+                  <upap:ExtractPDFPageRange DisplayName="Extract PDF Page Range" FileName="[In_ConfigDic(&quot;IACET_Client_Details&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,135" sap2010:WorkflowViewState.IdRef="ExtractPDFPageRange_1" OutputFileName="[In_ConfigDic(&quot;ReadAble Folder&quot;).ToString+&quot;\&quot;+intCounter.ToString+&quot;.pdf&quot;]" Range="[intCounter.ToString+&quot;-&quot;+intCounter.ToString]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,404" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Extracted PDF which is unreadable&quot;]" />
+                  <upap:ExtractPDFPageRange DisplayName="Extract PDF Page Range" FileName="[In_ConfigDic(&quot;IACET_Client_Details&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,135" sap2010:WorkflowViewState.IdRef="ExtractPDFPageRange_2" OutputFileName="[In_ConfigDic(&quot;UnReadAble Folder&quot;).ToString+&quot;\&quot;+intCounter.ToString+&quot;.pdf&quot;]" Range="[intCounter.ToString+&quot;-&quot;+intCounter.ToString]" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[intCounter]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[intCounter+1]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </ui:InterruptibleDoWhile.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InterruptibleDoWhile>
+    </Sequence>
   </Sequence>
 </Activity>
