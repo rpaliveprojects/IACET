@@ -86,11 +86,7 @@
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Default="1" Name="intPageCount" />
       <Variable x:TypeArguments="x:String" Name="strPdfText" />
-      <Variable x:TypeArguments="x:Int32" Name="intCounter">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" Value="1" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" Default="1" Name="intCounter" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
