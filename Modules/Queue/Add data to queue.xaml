@@ -1,6 +1,6 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Add_data_to_queue" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="In_dictConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="In_dict_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -99,9 +99,9 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Add_data_to_queue" sap:VirtualizedContainerService.HintSize="450,3393.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Name="dt1" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dt2" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dt3" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_1" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_2" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_3" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -109,22 +109,22 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Add Data to Queue Start Time&quot;+ Now.ToString]" />
-    <ui:ReadRange AddHeaders="True" DataTable="[dt1]" DisplayName="Read ExtractPDFData" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[In_dictConfig(&quot;ExtractedPDFDataPath&quot;).ToString]">
+    <ui:ReadRange AddHeaders="True" DataTable="[dt_1]" DisplayName="Read ExtractPDFData" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[In_dict_Config(&quot;ExtractedPDFDataPath&quot;).ToString]">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <ui:RemoveDuplicateRows DataTable="[dt1]" DisplayName="Remove Duplicate Rows" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_1" OutputDataTable="[dt1]" />
-    <ui:ReadRange AddHeaders="True" DataTable="[dt2]" DisplayName="Read ExcelDataBase" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="[In_dictConfig(&quot;ExcelDatabasePath&quot;).ToString]">
+    <ui:RemoveDuplicateRows DataTable="[dt_1]" DisplayName="Remove Duplicate Rows" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_1" OutputDataTable="[dt_1]" />
+    <ui:ReadRange AddHeaders="True" DataTable="[dt_2]" DisplayName="Read ExcelDataBase" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="[In_dict_Config(&quot;ExcelDatabasePath&quot;).ToString]">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <ui:JoinDataTables DataTable1="[dt1]" DataTable2="[dt2]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="JoinDataTables_2" JoinType="Inner" OutputDataTable="[dt3]">
+    <ui:JoinDataTables DataTable1="[dt_1]" DataTable2="[dt_2]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="JoinDataTables_2" JoinType="Inner" OutputDataTable="[dt_3]">
       <ui:JoinDataTables.Arguments>
         <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
           <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
@@ -138,17 +138,17 @@
         </scg:List>
       </ui:JoinDataTables.Arguments>
     </ui:JoinDataTables>
-    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="First Name" DataTable="[dt3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_1" />
-    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Company Name" DataTable="[dt3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_11" />
-    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Role in Company" DataTable="[dt3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_4" />
-    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Address_1" DataTable="[dt3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_5" />
-    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Email_1" DataTable="[dt3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_6" />
-    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Phone Number_1" DataTable="[dt3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_7" />
-    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="XRD_1" DataTable="[dt3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_8" />
-    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="State_1" DataTable="[dt3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_9" />
-    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Last Name " DataTable="[dt3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_12" />
-    <ui:WriteRange AddHeaders="True" DataTable="[dt3]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet1" StartingCell="A1" WorkbookPath="Data\Output\Output.xlsx" />
-    <ui:BulkAddQueueItems ContinueOnError="True" DisplayName="Add transactions to queue" FolderPath="[In_dictConfig(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="388,197.33333333333334" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_1" QueueItemsDataTable="[dt3]" QueueName="[In_dictConfig(&quot;OrchestratorQueueFolder&quot;).ToString]" TimeoutMS="5000" />
+    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="First Name" DataTable="[dt_3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_1" />
+    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Company Name" DataTable="[dt_3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_11" />
+    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Role in Company" DataTable="[dt_3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_4" />
+    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Address_1" DataTable="[dt_3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_5" />
+    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Email_1" DataTable="[dt_3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_6" />
+    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Phone Number_1" DataTable="[dt_3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_7" />
+    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="XRD_1" DataTable="[dt_3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_8" />
+    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="State_1" DataTable="[dt_3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_9" />
+    <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Last Name " DataTable="[dt_3]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="388,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_12" />
+    <ui:WriteRange AddHeaders="True" DataTable="[dt_3]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="Sheet1" StartingCell="A1" WorkbookPath="Data\Output\Output.xlsx" />
+    <ui:BulkAddQueueItems ContinueOnError="True" DisplayName="Add transactions to queue" FolderPath="[In_dict_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="388,197.33333333333334" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_1" QueueItemsDataTable="[dt_3]" QueueName="[In_dict_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" TimeoutMS="5000" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Add Data to Queue End Time&quot;+ Now.ToString]" />
   </Sequence>
 </Activity>
