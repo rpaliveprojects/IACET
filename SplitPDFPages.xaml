@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>648,2048</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>648,2229</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ReadPDFandExtractData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -91,15 +91,18 @@
       <AssemblyReference>System.Linq.Parallel</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="634,1983" sap2010:WorkflowViewState.IdRef="Sequence_7">
+  <Sequence sap:VirtualizedContainerService.HintSize="634,2164" sap2010:WorkflowViewState.IdRef="Sequence_7">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="ReadPDFandExtractData" sap:VirtualizedContainerService.HintSize="572,1872" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="572,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;SplitPDFPages Workflow Started&quot;]" />
+    <Sequence DisplayName="ReadPDFandExtractData" sap:VirtualizedContainerService.HintSize="572,1691" sap2010:WorkflowViewState.IdRef="Sequence_1">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Default="1" Name="intPageCount" />
         <Variable x:TypeArguments="x:String" Name="strPdfText" />
@@ -111,7 +114,6 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Read PDF and Extract Informations&quot;]" />
       <upap:GetPDFPageCount DisplayName="Get PDF Page Count" FileName="[In_ConfigDic(&quot;IACET_Client_Details&quot;).ToString]" sap:VirtualizedContainerService.HintSize="510,82" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_1" PageCount="[intPageCount]" />
       <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[intCounter&lt;=intPageCount]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="510,1458" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
         <ui:InterruptibleDoWhile.Body>
@@ -169,5 +171,6 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:InterruptibleDoWhile>
     </Sequence>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="572,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;SplitPDFPages Workflow Ended&quot;]" />
   </Sequence>
 </Activity>

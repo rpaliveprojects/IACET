@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>562,1772</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>648,1953</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Save_Attachments_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -92,7 +92,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Save Email Attchments" sap:VirtualizedContainerService.HintSize="572,1707" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Save Email Attchments" sap:VirtualizedContainerService.HintSize="572,1888" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="GetMail" />
     </Sequence.Variables>
@@ -135,7 +135,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" ExcludeInlineAttachments="False" FolderPath="[In_ConfigDic(&quot;Save Email Attachment&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[currentItem]" OverwriteExisting="False" />
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Attachment has been saved&quot;]" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Attachment has been saved&quot;]" />
                 </Sequence>
               </If.Then>
               <If.Else>
@@ -158,5 +158,6 @@
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Save Attachments workflow ended&quot;]" />
   </Sequence>
 </Activity>
