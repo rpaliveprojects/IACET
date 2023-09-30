@@ -44,6 +44,7 @@
       <x:String>UiPath.Mail.SMTP.Activities</x:String>
       <x:String>UiPath.PDF.Activities</x:String>
       <x:String>UiPath.PDF.Activities.PDF</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -97,12 +98,17 @@
       <AssemblyReference>System.Net.Mail</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="ReadEmails" sap:VirtualizedContainerService.HintSize="512,349.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="ReadEmails" sap:VirtualizedContainerService.HintSize="512,319.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="GetMail" />
       <Variable x:TypeArguments="x:Boolean" Name="AttachementExisit" />
+      <Variable x:TypeArguments="x:String" Name="strPdfData" />
+      <Variable x:TypeArguments="x:String" Name="strSplitPdf" />
+      <Variable x:TypeArguments="x:Int32" Name="InRange" />
+      <Variable x:TypeArguments="x:Int32" Default="1" Name="Incounter" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -111,14 +117,20 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Save Attachement" sap:VirtualizedContainerService.HintSize="449.6,83.2" sap2010:WorkflowViewState.IdRef="Sequence_14">
+    <Sequence DisplayName="Save Attachement" sap:VirtualizedContainerService.HintSize="449.6,83.2" sap2010:WorkflowViewState.IdRef="Sequence_22">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" FilterExpression="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages" Email="[InDicConfig(&quot;Email&quot;).ToString]" EnableSSL="True" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="510.4,24.8" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" IgnoreCRL="False" MailFolder="[InDicConfig(&quot;MailFolder&quot;).ToString]" MarkAsRead="True" Messages="[GetMail]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Password="[InDicConfig(&quot;EmailPassword&quot;).ToString]" Port="[cint(InDicConfig(&quot;ImapPort&quot;))]" SecureConnection="Auto" Server="[InDicConfig(&quot;ImapServer&quot;).ToString]" Top="30" />
+      <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" FilterExpression="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" sap2010:Annotation.AnnotationText="Read All mails" DeleteMessages="False" DisplayName="Get IMAP Mail Messages" Email="[InDicConfig(&quot;Email&quot;).ToString]" EnableSSL="True" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="510.4,56" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" IgnoreCRL="False" MailFolder="[InDicConfig(&quot;MailFolder&quot;).ToString]" MarkAsRead="True" Messages="[GetMail]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Password="[InDicConfig(&quot;EmailPassword&quot;).ToString]" Port="[cint(InDicConfig(&quot;ImapPort&quot;))]" SecureConnection="Auto" Server="[InDicConfig(&quot;ImapServer&quot;).ToString]" Top="30">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:GetIMAPMailMessages>
       <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="510.4,996" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[GetMail]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="snm:MailMessage">
@@ -170,21 +182,78 @@
         </ui:ForEach.Body>
       </ui:ForEach>
     </Sequence>
-    <Sequence DisplayName="ReadAndSplitPdf" sap:VirtualizedContainerService.HintSize="449.6,83.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
-      <Sequence.Variables>
-        <Variable x:TypeArguments="x:String" Name="strPdfData" />
-        <Variable x:TypeArguments="x:String" Name="strSplitPdf" />
-        <Variable x:TypeArguments="x:Int32" Name="strRange" />
-      </Sequence.Variables>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="449.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="512,195.2" sap2010:WorkflowViewState.IdRef="Sequence_23">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="ReadAndSplitPdf" sap:VirtualizedContainerService.HintSize="449.6,83.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="variable1" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <upap:GetPDFPageCount DisplayName="Get PDF Page Count" FileName="[InDicConfig(&quot;AttachementFolderPath&quot;).ToString+&quot;\&quot;+InDicConfig(&quot;IacetName&quot;).ToString]" sap:VirtualizedContainerService.HintSize="387.2,83.2" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_4" PageCount="[InRange]" />
+            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[InRange&gt;=Incounter]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+              <ui:InterruptibleDoWhile.Body>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476.8,744" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="strPdfText" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[InDicConfig(&quot;AttachementFolderPath&quot;).ToString+&quot;\&quot;+InDicConfig(&quot;IacetName&quot;).ToString]" sap:VirtualizedContainerService.HintSize="433.6,83.2" sap2010:WorkflowViewState.IdRef="ReadPDFText_3" Range="All" Text="[strPdfText]" />
+                  <If Condition="[strPdfText.Length&gt;1]" sap:VirtualizedContainerService.HintSize="433.6,409.6" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="364.8,226.4" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <upap:ExtractPDFPageRange DisplayName="Extract PDF Page Range" FileName="[InDicConfig(&quot;AttachementFolderPath&quot;).ToString+&quot;\&quot;+InDicConfig(&quot;IacetName&quot;).ToString]" sap:VirtualizedContainerService.HintSize="321.6,136.8" sap2010:WorkflowViewState.IdRef="ExtractPDFPageRange_2" OutputFileName="[InDicConfig(&quot;SplitAttachementFolder&quot;).ToString+&quot;\&quot;+Incounter.ToString+&quot;.pdf&quot;]" Range="[Incounter.ToString+&quot;-&quot;+Incounter.ToString]" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_21" />
+                    </If.Else>
+                  </If>
+                  <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[Incounter]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[Incounter+1]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </ui:InterruptibleDoWhile.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InterruptibleDoWhile>
+          </Sequence>
+        </Sequence>
+      </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <upap:GetPDFPageCount DisplayName="Get PDF Page Count" FileName="Data\IACET Attachement\IACET client Details[2305843009213758970].pdf" sap:VirtualizedContainerService.HintSize="387.2,83.2" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_2" PageCount="[strRange]" />
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="387.2,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[strRange.ToString]" />
-      <upap:ExtractPDFPageRange DisplayName="Extract PDF Page Range" FileName="Data\IACET Attachement\IACET client Details[2305843009213758970].pdf" sap:VirtualizedContainerService.HintSize="387.2,136.8" sap2010:WorkflowViewState.IdRef="ExtractPDFPageRange_1" OutputFileName="C:\Users\kdeve\OneDrive\Documents\UiPath\IACET\Data\Split Pdf\IACET.pdf" Range="[&quot;1&quot;+&quot;-&quot;+strRange.tostring]" />
-    </Sequence>
+    </ui:CommentOut>
   </Sequence>
 </Activity>
