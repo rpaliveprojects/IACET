@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>583.3333333333334,1424</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>778.6666666666666,9388.666666666666</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ReadAndExtractPDFInfo_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -128,11 +128,11 @@
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-      <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
-      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+      <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
+      <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="ReadAndExtractPDFInfo" sap:VirtualizedContainerService.HintSize="788.6666666666666,10565.333333333334" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="It will read the entire pdf page by page and upload each page information on queue.  " DisplayName="ReadAndExtractPDFInfo" sap:VirtualizedContainerService.HintSize="788.6666666666666,9324" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="int_PageCount" />
       <Variable x:TypeArguments="x:Int32" Name="int_PgNmb" />
@@ -147,10 +147,11 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message(Regex Datatable)" sap:VirtualizedContainerService.HintSize="726.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Building Regex Datable....&quot;]">
+    <ui:LogMessage DisplayName="Log Message(Regex Datatable)" sap:VirtualizedContainerService.HintSize="726.6666666666666,54" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Building Regex Datable....&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
@@ -158,7 +159,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:BuildDataTable sap2010:Annotation.AnnotationText="This datatable will be used to get the Values through Regex" DataTable="[dt_Regex]" DisplayName="Regex Datatable" sap:VirtualizedContainerService.HintSize="726.6666666666666,105.33333333333333" sap2010:WorkflowViewState.IdRef="BuildDataTable_4" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Field&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Regex&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Value&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;Full Name&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=Name\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;Address&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=Address\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;Company&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=Company\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;Designation&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=Designation\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;Email&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=Email\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;State&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=Office\sAddress\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;XRD&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=XRD\sNumber\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;Phone Number&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=Phone\sNumber\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;">
+    <ui:BuildDataTable sap2010:Annotation.AnnotationText="This datatable will be used to get the Values through Regex" DataTable="[dt_Regex]" DisplayName="Regex Datatable" sap:VirtualizedContainerService.HintSize="726.6666666666666,99.33333333333333" sap2010:WorkflowViewState.IdRef="BuildDataTable_4" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Field&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Regex&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Value&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;Full Name&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=Name\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;Address&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=Address\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;Company&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=Company\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;Designation&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=Designation\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;Email&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=Email\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;State&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=Office\sAddress\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;XRD&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=XRD\sNumber\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Field&gt;Phone Number&lt;/Field&gt;&#xA;    &lt;Regex&gt;(?&amp;lt;=Phone\sNumber\:\s)(.*)&lt;/Regex&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -167,7 +168,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:BuildDataTable>
-    <ui:LogMessage DisplayName="Log Message(Building Output Datatable)" sap:VirtualizedContainerService.HintSize="726.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Building Output Datable....&quot;]">
+    <ui:LogMessage DisplayName="Log Message(Building Output Datatable)" sap:VirtualizedContainerService.HintSize="726.6666666666666,54" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Building Output Datable....&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
@@ -175,14 +176,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:BuildDataTable sap2010:Annotation.AnnotationText="It will be used to store all the pdf data extracted using Regex Datatable" DataTable="[dt_Output]" DisplayName="Output Datatable" sap:VirtualizedContainerService.HintSize="726.6666666666666,105.33333333333333" sap2010:WorkflowViewState.IdRef="BuildDataTable_5" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;FirstName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;LastName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Address&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Company&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Designation&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Email&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;State&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;XRD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Phone_x0020_Number&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Country&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Policy&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Policy_x0020_Type&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Capital&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
+    <ui:BuildDataTable sap2010:Annotation.AnnotationText="It will be used to store all the pdf data extracted using Regex Datatable" DataTable="[dt_Output]" DisplayName="Output Datatable" sap:VirtualizedContainerService.HintSize="726.6666666666666,116" sap2010:WorkflowViewState.IdRef="BuildDataTable_5" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;FirstName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;LastName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Address&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Company&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Designation&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Email&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;State&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;XRD&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Phone_x0020_Number&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Country&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Policy&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Policy_x0020_Type&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Capital&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:BuildDataTable>
-    <ui:LogMessage DisplayName="Log Message -Get Page count" sap:VirtualizedContainerService.HintSize="726.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Getting Pdf Page count&quot;]">
+    <ui:LogMessage DisplayName="Log Message -Get Page count" sap:VirtualizedContainerService.HintSize="726.6666666666666,54" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Getting Pdf Page count&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -190,7 +191,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <upap:GetPDFPageCount sap2010:Annotation.AnnotationText="Getting number of pages in a pdf to read." DisplayName="Get PDF Page Count" FileName="[In_TransItem.SpecificContent(&quot;File Full Path&quot;).ToString]" sap:VirtualizedContainerService.HintSize="726.6666666666666,114.66666666666667" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_1" PageCount="[int_PageCount]">
+    <upap:GetPDFPageCount sap2010:Annotation.AnnotationText="Getting number of pages in a pdf to read." DisplayName="Get PDF Page Count" FileName="[In_TransItem.SpecificContent(&quot;File Full Path&quot;).ToString]" sap:VirtualizedContainerService.HintSize="726.6666666666666,100.66666666666667" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_1" PageCount="[int_PageCount]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
@@ -199,7 +200,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </upap:GetPDFPageCount>
-    <ui:LogMessage DisplayName="Log Message - Get Page Count Completed" sap:VirtualizedContainerService.HintSize="726.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Pdf Page count retreived as &quot;+int_PageCount.ToString]">
+    <ui:LogMessage DisplayName="Log Message - Get Page Count Completed" sap:VirtualizedContainerService.HintSize="726.6666666666666,54" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Pdf Page count retreived as &quot;+int_PageCount.ToString]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -207,7 +208,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:LogMessage DisplayName="Log Message- Looping through padf pages" sap:VirtualizedContainerService.HintSize="726.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Started looping through each pdf page......&quot;]">
+    <ui:LogMessage DisplayName="Log Message- Looping through padf pages" sap:VirtualizedContainerService.HintSize="726.6666666666666,54" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Started looping through each pdf page......&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -215,9 +216,9 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:InterruptibleWhile sap2010:Annotation.AnnotationText="It will read all the pdf pages one by one" Condition="[int_PgNmb&lt;int_PageCount]" CurrentIndex="[_out_InterruptibleWhile_1__CurrentIndex]" DisplayName="While - Read PDF Pages" sap:VirtualizedContainerService.HintSize="726.6666666666666,8901.333333333334" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+    <ui:InterruptibleWhile sap2010:Annotation.AnnotationText="It will read all the pdf pages one by one" Condition="[int_PgNmb&lt;int_PageCount]" CurrentIndex="[_out_InterruptibleWhile_1__CurrentIndex]" DisplayName="While - Read PDF Pages" sap:VirtualizedContainerService.HintSize="726.6666666666666,8092" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
       <ui:InterruptibleWhile.Body>
-        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="692.6666666666666,8732.666666666666" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="692.6666666666666,7923.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="str_PageInfo" />
             <Variable x:TypeArguments="x:Boolean" Name="bool_DataFound" />
@@ -243,7 +244,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:ReadPDFText PreserveFormatting="{x:Null}" sap2010:Annotation.AnnotationText="Reading PDF file as text and storing page info." DisplayName="Readinng PDF as text" FileName="[In_TransItem.SpecificContent(&quot;File Full Path&quot;).ToString]" sap:VirtualizedContainerService.HintSize="650.6666666666666,114.66666666666667" sap2010:WorkflowViewState.IdRef="ReadPDFText_2" Range="[int_PgNmb.ToString]" Text="[str_PageInfo]">
+          <ui:ReadPDFText PreserveFormatting="{x:Null}" sap2010:Annotation.AnnotationText="It will read the Pdf page infor if it has text." DisplayName="Readinng PDF as text" FileName="[In_TransItem.SpecificContent(&quot;File Full Path&quot;).ToString]" sap:VirtualizedContainerService.HintSize="650.6666666666666,114.66666666666667" sap2010:WorkflowViewState.IdRef="ReadPDFText_2" Range="[int_PgNmb.ToString]" Text="[str_PageInfo]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
@@ -251,19 +252,20 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ReadPDFText>
-          <If sap2010:Annotation.AnnotationText="" Condition="[str_PageInfo.Length&lt;&gt;0]" sap:VirtualizedContainerService.HintSize="650.6666666666666,1349.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+          <If sap2010:Annotation.AnnotationText="Check if page info is extracted. If yes, then check if page has relevant information or not and store the result in boolean variable. If not then pdf probably have images and try to read the page by OCR." Condition="[str_PageInfo.Length&lt;&gt;0]" sap:VirtualizedContainerService.HintSize="650.6666666666666,199.33333333333334" sap2010:WorkflowViewState.IdRef="If_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="376,332" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Sequence sap2010:Annotation.AnnotationText="" sap:VirtualizedContainerService.HintSize="376,332" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Checking if page has relevant info.&quot;]" />
@@ -271,13 +273,14 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="452,802.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Sequence sap:VirtualizedContainerService.HintSize="376,620.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_4">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ReadPDFWithOCR DegreeOfParallelism="-1" DisplayName="Read PDF With OCR" FileName="[In_TransItem.SpecificContent(&quot;File Full Path&quot;).ToString]" sap:VirtualizedContainerService.HintSize="410,159.33333333333334" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_2" ImageDpi="150" Range="[int_PgNmb.ToString]" Text="[str_PageInfo]">
+                <ui:LogMessage DisplayName="Log Message(Read with OCR)" sap:VirtualizedContainerService.HintSize="334,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_57" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Reading pdf page with OCR&quot;]" />
+                <ui:ReadPDFWithOCR DegreeOfParallelism="-1" DisplayName="Read PDF With OCR" FileName="[In_TransItem.SpecificContent(&quot;File Full Path&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,159.33333333333334" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_2" ImageDpi="150" Range="[int_PgNmb.ToString]" Text="[str_PageInfo]">
                   <ui:ReadPDFWithOCR.OCREngine>
                     <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
                       <ActivityFunc.Argument>
@@ -293,11 +296,12 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ReadPDFWithOCR>
-                <If Condition="[str_PageInfo.Length&lt;&gt;0]" sap:VirtualizedContainerService.HintSize="410,516" sap2010:WorkflowViewState.IdRef="If_4">
+                <If sap2010:Annotation.AnnotationText="Checking if after reading with OCR we retrieved any page information. If yes then check if it has any frelevant information or not." Condition="[str_PageInfo.Length&lt;&gt;0]" sap:VirtualizedContainerService.HintSize="334,149.33333333333334" sap2010:WorkflowViewState.IdRef="If_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
@@ -324,15 +328,16 @@
               </Sequence>
             </If.Else>
           </If>
-          <If Condition="[bool_DataFound=True]" sap:VirtualizedContainerService.HintSize="650.6666666666666,6606.666666666667" sap2010:WorkflowViewState.IdRef="If_5">
+          <If sap2010:Annotation.AnnotationText="Checking if page has relevant information. If yes, then extract page info.Else, move to next transaction." Condition="[bool_DataFound=True]" sap:VirtualizedContainerService.HintSize="650.6666666666666,6947.333333333333" sap2010:WorkflowViewState.IdRef="If_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="616.6666666666666,6190.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <Sequence sap:VirtualizedContainerService.HintSize="616.6666666666666,6500.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -340,7 +345,7 @@
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="574.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Page has relevant information&quot;]" />
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="574.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Started Extracting Page info....&quot;]" />
-                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[_out_ForEachRow_1__CurrentIndex]" DataTable="[dt_Regex]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="574.6666666666666,462.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                <ui:ForEachRow ColumnNames="{x:Null}" sap2010:Annotation.AnnotationText="As page has relevant info, we will extarct the desired input using regex datatable and storing the output in Regex data table  for now." CurrentIndex="[_out_ForEachRow_1__CurrentIndex]" DataTable="[dt_Regex]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="574.6666666666666,508" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                   <ui:ForEachRow.Body>
                     <ActivityAction x:TypeArguments="sd2:DataRow">
                       <ActivityAction.Argument>
@@ -371,33 +376,36 @@
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEachRow>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="574.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Completed Started Extracting Page info....&quot;]" />
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="574.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Adding Page info to datatable&quot;]" />
-                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Split(dt_Regex.Rows(0).Item(&quot;Value&quot;).ToString,&quot; &quot;)(0).ToString.Trim.tostring,Split(dt_Regex.Rows(0).Item(&quot;Value&quot;).ToString,&quot; &quot;)(1).ToString.Trim.tostring,dt_Regex.Rows(1).Item(&quot;Value&quot;).ToString.Trim.tostring,dt_Regex.Rows(2).Item(&quot;Value&quot;).ToString.Trim.tostring,dt_Regex.Rows(3).Item(&quot;Value&quot;).ToString.Trim.tostring,dt_Regex.Rows(4).Item(&quot;Value&quot;).ToString.Trim.tostring,dt_Regex.Rows(5).Item(&quot;Value&quot;).ToString.Trim.tostring,dt_Regex.Rows(6).Item(&quot;Value&quot;).ToString.Trim.tostring,dt_Regex.Rows(7).Item(&quot;Value&quot;).ToString.Trim.tostring}]" DataTable="[dt_Output]" DisplayName="Add Data Row - Store all infor in output Datatable" sap:VirtualizedContainerService.HintSize="574.6666666666666,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_2">
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="574.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Adding Page info to Output datatable&quot;]" />
+                <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="It will save add the page information in Output datatable" ArrayRow="[{Split(dt_Regex.Rows(0).Item(&quot;Value&quot;).ToString,&quot; &quot;)(0).ToString.Trim.tostring,Split(dt_Regex.Rows(0).Item(&quot;Value&quot;).ToString,&quot; &quot;)(1).ToString.Trim.tostring,dt_Regex.Rows(1).Item(&quot;Value&quot;).ToString.Trim.tostring,dt_Regex.Rows(2).Item(&quot;Value&quot;).ToString.Trim.tostring,dt_Regex.Rows(3).Item(&quot;Value&quot;).ToString.Trim.tostring,dt_Regex.Rows(4).Item(&quot;Value&quot;).ToString.Trim.tostring,dt_Regex.Rows(5).Item(&quot;Value&quot;).ToString.Trim.tostring,dt_Regex.Rows(6).Item(&quot;Value&quot;).ToString.Trim.tostring,dt_Regex.Rows(7).Item(&quot;Value&quot;).ToString.Trim.tostring}]" DataTable="[dt_Output]" DisplayName="Add Data Row - Store all infor in output Datatable" sap:VirtualizedContainerService.HintSize="574.6666666666666,236.66666666666666" sap2010:WorkflowViewState.IdRef="AddDataRow_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:AddDataRow>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="574.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Successfully Added Page info to datatable&quot;]" />
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="574.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Started Reading ExcelDataBase&quot;]" />
-                <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_ExcelDataBase]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="574.6666666666666,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="[In_dict_Config(&quot;ExcelDatabasePath&quot;).ToString]" />
+                <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt_ExcelDataBase]" DisplayName="Read Range ExcelDatabase Workbook" sap:VirtualizedContainerService.HintSize="574.6666666666666,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="[In_dict_Config(&quot;ExcelDatabasePath&quot;).ToString]" />
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="574.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Completed  Reading ExcelDataBase&quot;]" />
-                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[int_RwInxOutput]" DataTable="[dt_Output]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="574.6666666666666,2005.3333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+                <ui:ForEachRow ColumnNames="{x:Null}" sap2010:Annotation.AnnotationText="Started looking in Excel data base for Country, Policy, Policy Type and Capital Information" CurrentIndex="[int_RwInxOutput]" DataTable="[dt_Output]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="574.6666666666666,2162.6666666666665" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
                   <ui:ForEachRow.Body>
                     <ActivityAction x:TypeArguments="sd2:DataRow">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="sd2:DataRow" Name="CurrentRow" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="540.6666666666666,1815.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                      <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Body" sap:VirtualizedContainerService.HintSize="540.6666666666666,1942" sap2010:WorkflowViewState.IdRef="Sequence_13">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="498.6666666666667,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Started Looking up Values in Excel Database&quot;]" />
@@ -411,11 +419,12 @@
                         </ui:LookupDataTable>
                         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="498.6666666666667,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Completed Looking up Values in Excel Database&quot;]" />
                         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="498.6666666666667,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Started Checking if match is found&quot;]" />
-                        <If Condition="[int_RwInxExcelDataBase&lt;&gt;-1]" sap:VirtualizedContainerService.HintSize="498.6666666666667,833.3333333333334" sap2010:WorkflowViewState.IdRef="If_7">
+                        <If sap2010:Annotation.AnnotationText="Checking if we match is found. If yes, then copy the values from excel database to output datatable for Country, Policy, Policy Type and Capital." Condition="[int_RwInxExcelDataBase&lt;&gt;-1]" sap:VirtualizedContainerService.HintSize="498.6666666666667,960" sap2010:WorkflowViewState.IdRef="If_7">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <If.Then>
@@ -484,10 +493,16 @@
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEachRow>
-                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="574.6666666666666,1903.3333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                <TryCatch sap2010:Annotation.AnnotationText="Upload the extracted Page info to Queue. If there is any exception then we are going to catch it. Finally, we are going to write the pdf page info in an excel tracking sheet if data is successfully uploaded to queue." DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="574.6666666666666,1965.3333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                   <TryCatch.Try>
                     <Sequence sap:VirtualizedContainerService.HintSize="496,434" sap2010:WorkflowViewState.IdRef="Sequence_27">
                       <sap:WorkflowViewStateService.ViewState>
